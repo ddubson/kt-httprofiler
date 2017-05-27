@@ -5,10 +5,13 @@ import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it
 import org.junit.Assert.assertEquals
+import org.junit.platform.runner.JUnitPlatform
+import org.junit.runner.RunWith
 
-abstract class HttpProfilerContractTest : Spek({
+@RunWith(JUnitPlatform::class)
+class HttpProfilerContractTest : Spek({
     describe("an http profiler") {
-        val profiler: Profiler = getProfiler()
+        val profiler: Profiler = FakeHttpProfiler()
 
         describe("executing getHeaders") {
             val target = "http://localhost:80"
@@ -18,10 +21,8 @@ abstract class HttpProfilerContractTest : Spek({
                 val expectedHeaders: MutableMap<String, String> = HashMap()
                 expectedHeaders.put("Server", "Apache")
 
-                assertEquals(headers, equalTo(expectedHeaders))
+                assertEquals(expectedHeaders, equalTo(headers))
             }
         }
     }
-}) {
-    abstract fun getProfiler(): Profiler
-}
+})
