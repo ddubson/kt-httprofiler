@@ -1,10 +1,12 @@
 package com.ddubson
 
+import com.ddubson.profiler.FakeHttpProfiler
+import com.ddubson.profiler.Profiler
 import org.hamcrest.CoreMatchers.equalTo
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it
-import org.junit.Assert.assertEquals
+import org.junit.Assert.assertThat
 import org.junit.platform.runner.JUnitPlatform
 import org.junit.runner.RunWith
 
@@ -21,7 +23,7 @@ class HttpProfilerContractTest : Spek({
                 val expectedHeaders: MutableMap<String, String> = HashMap()
                 expectedHeaders.put("Server", "Apache")
 
-                assertEquals(expectedHeaders, equalTo(headers))
+                assertThat(expectedHeaders, equalTo(headers))
             }
         }
     }
