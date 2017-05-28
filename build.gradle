@@ -38,4 +38,6 @@ dependencies {
     testCompile "org.junit.platform:junit-platform-runner:1.0.0-M4"
     testCompile "org.jetbrains.spek:spek-api:1.1.2"
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.0-M4'
+    testCompile 'org.mockito:mockito-all:1.8.0-rc2'
+    testCompile 'com.nhaarman:mockito-kotlin:1.4.0'
 }

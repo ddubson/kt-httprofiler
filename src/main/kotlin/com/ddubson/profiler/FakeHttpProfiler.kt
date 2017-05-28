@@ -1,4 +1,4 @@
-package com.ddubson
+package com.ddubson.profiler
 
 class FakeHttpProfiler : Profiler {
     override fun getHeaders(target: String): MutableMap<String, String> {

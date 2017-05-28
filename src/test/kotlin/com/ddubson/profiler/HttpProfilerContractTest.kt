@@ -1,7 +1,5 @@
-package com.ddubson
+package com.ddubson.profiler
 
-import com.ddubson.profiler.FakeHttpProfiler
-import com.ddubson.profiler.Profiler
 import org.hamcrest.CoreMatchers.equalTo
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe

@@ -1,4 +1,7 @@
 package com.ddubson.reporter
 
-class HttpReporter {
+class HttpReporter : Reporter {
+    override fun printReport(server: String) {
+
+    }
 }
