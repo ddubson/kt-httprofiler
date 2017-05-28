@@ -1,4 +1,6 @@
-import com.ddubson.Application
+package com.ddubson
+
+import com.ddubson.domain.ServerDetails
 import com.ddubson.profiler.Profiler
 import com.ddubson.reporter.Reporter
 import com.nhaarman.mockito_kotlin.mock
@@ -20,16 +22,18 @@ class ApplicationTest : Spek({
 
         given("http profiler returns a Server header") {
             it("should report the type of Server found") {
-                val target = "localhost:80"
+                val baseUrl = "http://www.example.com"
+                val endpoint = "/"
                 val identifiedServer = "Apache"
+                val serverDetails = ServerDetails(identifiedServer)
 
-                whenever(profiler.getHeaders(target))
-                        .thenReturn(hashMapOf("Server" to identifiedServer))
+                whenever(profiler.getServerDetails(baseUrl, endpoint))
+                        .thenReturn(serverDetails)
 
-                application.run(target)
+                application.run(baseUrl, endpoint)
 
-                verify(profiler).getHeaders(target)
-                verify(reporter).printReport(identifiedServer)
+                verify(profiler).getServerDetails(baseUrl, endpoint)
+                verify(reporter).printReport(serverDetails)
             }
         }
     }

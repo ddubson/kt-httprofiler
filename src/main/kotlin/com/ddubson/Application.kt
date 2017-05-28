@@ -7,8 +7,8 @@ class Application(profiler: Profiler, reporter: Reporter) {
     val profiler = profiler
     val reporter = reporter
 
-    fun run(target: String): Unit {
-        val headers = profiler.getHeaders(target)
-        reporter.printReport(headers.getOrDefault("Server", ""))
+    fun run(baseUrl: String, endpoint: String): Unit {
+        val serverDetails = profiler.getServerDetails(baseUrl, endpoint)
+        reporter.printReport(serverDetails)
     }
 }
